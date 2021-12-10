@@ -53,3 +53,9 @@
         SHOW_TRAJECTORY_OCCUPANCIES_EGO = false;     
         SHOW_PREDICTED_OCCUPANCIES_EGO = false;      
         SHOW_GOALREGION = false;
+* Run main.m file by typing in your matlab command window
+
+      main
+* If collision is avoided and the trajectories are safe, the output on the command window will be:
+
+      Trajectory is collision-free. Formally verified by SPOT.
