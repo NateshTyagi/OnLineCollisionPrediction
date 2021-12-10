@@ -1,6 +1,7 @@
 # On-line collision prediction for AV
+<img src="https://user-images.githubusercontent.com/31695489/145541673-78572bc1-fcef-431f-a9f6-e83f12fb6168.png" width=60% height=60%>
 
-### How to run
+## How to run
 * Open a terminal
 * Clone SPOT's repository in your local workstation:
 
