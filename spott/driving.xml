@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<OpenSCENARIO>
+
+  <FileHeader author="The MathWorks" date="2021-12-09T17:09:47" description="Sample Scenario" revMajor="1" revMinor="0"/>
+
+  <ParameterDeclarations>
+    <ParameterDeclaration name="$Car1_Speed" parameterType="double" value="30"/>
+    <ParameterDeclaration name="$Car1_InitialWaitTime" parameterType="double" value="0"/>
+    <ParameterDeclaration name="$Car1_PositionX" parameterType="double" value="36.3592"/>
+    <ParameterDeclaration name="$Car1_PositionY" parameterType="double" value="-31.7891"/>
+    <ParameterDeclaration name="$Car1_PositionZ" parameterType="double" value="0"/>
+  </ParameterDeclarations>
+
+  <CatalogLocations>
+    <RouteCatalog>
+      <Directory path="./"/>
+    </RouteCatalog>
+    <VehicleCatalog>
+      <Directory path="./"/>
+    </VehicleCatalog>
+  </CatalogLocations>
+
+  <RoadNetwork>
+    <LogicFile filepath="./driving_OpenDRIVE.xodr"/>
+    <SceneGraphFile filepath=""/>
+  </RoadNetwork>
+
+  <Entities>
+    <ScenarioObject name="Ego">
+      <CatalogReference catalogName="driving_VehicleCatalog" entryName="Car"/>
+    </ScenarioObject>
+  </Entities>
+
+  <Storyboard>
+    <Init>
+      <Actions>
+        <Private entityRef="Ego">
+          <PrivateAction>
+            <LongitudinalAction>
+              <SpeedAction>
+                <SpeedActionDynamics dynamicsDimension="time" dynamicsShape="step" value="0"/>
+                <SpeedActionTarget>
+                  <AbsoluteTargetSpeed value="$Car1_Speed"/>
+                </SpeedActionTarget>
+              </SpeedAction>
+            </LongitudinalAction>
+          </PrivateAction>
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition h="-0.43184" p="0" r="0" x="$Car1_PositionX" y="$Car1_PositionY" z="$Car1_PositionZ"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+          <PrivateAction>
+            <RoutingAction>
+              <AssignRouteAction>
+                <CatalogReference catalogName="driving_RouteCatalog" entryName="MyRoute1"/>
+              </AssignRouteAction>
+            </RoutingAction>
+          </PrivateAction>
+        </Private>
+      </Actions>
+    </Init>
+    <Story name="DS_Story">
+      <Act name="DS_Act1">
+        <ManeuverGroup maximumExecutionCount="1" name="DS_ManeuverGroup_Ego_1">
+          <Actors selectTriggeringEntities="false">
+            <EntityRef entityRef="Ego"/>
+          </Actors>
+        </ManeuverGroup>
+        <StartTrigger>
+          <ConditionGroup>
+            <Condition conditionEdge="rising" delay="0" name="">
+              <ByValueCondition>
+                <SimulationTimeCondition rule="greaterThan" value="0"/>
+              </ByValueCondition>
+            </Condition>
+          </ConditionGroup>
+        </StartTrigger>
+      </Act>
+    </Story>
+    <StopTrigger>
+      <ConditionGroup>
+        <Condition conditionEdge="rising" delay="0" name="EndCondition_Ego_1">
+          <ByEntityCondition>
+            <TriggeringEntities triggeringEntitiesRule="any">
+              <EntityRef entityRef="Ego"/>
+            </TriggeringEntities>
+            <EntityCondition>
+              <ReachPositionCondition tolerance="2.0">
+                <Position>
+                  <WorldPosition x="36.6" y="-31.9" z="0"/>
+                </Position>
+              </ReachPositionCondition>
+            </EntityCondition>
+          </ByEntityCondition>
+        </Condition>
+      </ConditionGroup>
+    </StopTrigger>
+  </Storyboard>
+
+</OpenSCENARIO>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<OpenSCENARIO>
+
+  <FileHeader author="The MathWorks" date="2021-12-09T17:09:47" description="Sample Scenario" revMajor="1" revMinor="0"/>
+
+  <Catalog name="driving_VehicleCatalog">
+    <Vehicle name="Car" vehicleCategory="car">
+      <BoundingBox>
+        <Center x="37.7092" y="-31.7891" z="0"/>
+        <Dimensions height="1.4" length="4.7" width="1.8"/>
+      </BoundingBox>
+      <Performance maxAcceleration="5.36" maxDeceleration="6" maxSpeed="39"/>
+      <Axles>
+        <FrontAxle maxSteering="0.5" positionX="39.1592" positionZ="0.1905" trackWidth="1.8" wheelDiameter="0.381"/>
+        <RearAxle maxSteering="0.5" positionX="36.3592" positionZ="0.1905" trackWidth="1.8" wheelDiameter="0.381"/>
+      </Axles>
+      <Properties/>
+    </Vehicle>
+  </Catalog>
+
+</OpenSCENARIO>
